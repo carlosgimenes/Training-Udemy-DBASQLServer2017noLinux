@@ -1,0 +1,9 @@
+﻿--Configurar Putty(ssh)
+Colocar IP e porta atribuida para acesso remoto via ssh
+
+Endereço para download
+https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
+
+Exemplo da aula
+IP fixo 192.168.0.100
+Porta SSh 22795

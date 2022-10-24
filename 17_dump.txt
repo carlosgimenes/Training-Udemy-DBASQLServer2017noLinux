@@ -1,0 +1,27 @@
+﻿O filelocation.defaultdumpdir o local padrão onde a memória e despejos de memória do SQL são gerados sempre que houver uma falha de alterações de configuração. Por padrão, esses arquivos são gerados no /var/opt/mssql/log.
+
+--Crie o diretório de destino para novos arquivos de log de erro. O exemplo a seguir cria um novo /datafiles/dump diretório:
+
+sudo mkdir /datafiles/dump
+
+
+--Permissao do usuario
+sudo chown mssql /datafiles/dump
+sudo chgrp mssql /datafiles/dump
+sudo chmod 0777 /datafiles/dump
+
+
+--Use mssql conf para alterar o diretório de dados padrão com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdumpdir /datafiles/dump
+
+
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+

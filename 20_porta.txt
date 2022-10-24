@@ -1,0 +1,16 @@
+﻿O network.tcpport a porta TCP em que o SQL Server escuta para conexões de alterações de configuração. Por padrão, essa porta é definida como 1433. Para alterar a porta, execute os seguintes comandos:
+
+--Use mssql conf para alterar o diretório de dados padrão com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set network.tcpport 14336
+
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+

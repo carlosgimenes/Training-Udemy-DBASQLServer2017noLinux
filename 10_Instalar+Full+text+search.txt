@@ -1,0 +1,12 @@
+--Instalar Full text search (FTS)
+
+sudo apt-get update 
+sudo apt-get install -y mssql-server-fts
+
+--atualizar
+sudo apt-get update 
+sudo apt-get install -y mssql-server-fts
+
+-reiniciar
+
+sudo systemctl restart mssql-server

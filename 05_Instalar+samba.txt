@@ -1,0 +1,113 @@
+﻿1-Instalar Samba
+	
+sudo apt-get install samba samba-common  samba-libs
+
+2 -Verifique a versão do Samba instalado:
+
+smbd -V
+
+3- Adicionar usuario
+
+sudo adduser aluno
+digitar senha
+
+4-CRIANDO OS DIRETÓRIOS
+--criar diretorio na raiz
+cd ..
+cd ..
+sudo mkdir /datafiles
+cd datafiles
+--criando pastas dados
+sudo mkdir dados
+--criando pastas log
+sudo mkdir log
+
+
+5-  RECONHECENDO O GRUPO DE TRABALHO(windows)
+--comando dos
+net config workstation
+
+6- CONFIGURANDO O SERVIDOR SAMBA
+
+Faça o backup do arquivo "smb.conf", por segurança:
+
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bk
+
+7- Com o backup realizado, apague o arquivo original (segue um macete): 
+sudo su
+echo ' ' > /etc/samba/smb.conf 
+
+8- Edite o arquivo
+sudo vim /etc/samba/smb.conf 
+--adicionar a informacao, trocar parametros de necessario
+
+#==================== Global Settings =======================
+[global]
+workgroup = WORKGROUP
+server string = Samba Server %v
+netbios name = SQL-LNX-01
+security = user
+map to guest = bad user
+dns proxy = no
+
+#==================== Diretorio Restrito =====================
+[Arquivos DB]
+path = /datafiles
+valid users = @dba
+guest ok = no
+writable = yes
+browsable = yes
+#========================== FIM ==============================
+
+9- Reiniciar o serviço
+sudo /etc/init.d/samba restart
+
+10 -CONFERINDO OS DIRETÓRIOS E PERMISSÕES DE USUÁRIOS
+ ECHO "TESTE ARQUIVO" > /datafiles/teste.log
+
+ls-l | grep /datafiles
+
+11-altera permissao
+chmod -R 0777 /datafiles
+
+
+12-  GERENCIANDO USUÁRIOS, DONO, GRUPOS E "STARTANDO" O SERVIÇO
+
+addgroup dba
+
+
+13-Adicionar usuário ao grupo "dba": 
+
+sudo gpasswd -a aluno dba
+
+14-Para fixar ao grupo e suas restrições: 
+
+usermod -G dba aluno
+
+15-Mudar o dono dos diretórios
+chown -R aluno:dba /datafiles
+
+16-Adicionar usuario no SAMBA
+sudo smbpasswd -a aluno
+
+17-Reinicie o serviço do Samba: 
+
+sudo /etc/init.d/samba restart 
+
+18- Verificar os parâmetros do Samba:
+
+testparm 
+
+
+--Caso necessario 
+--Removendo
+sudo smbpasswd -x aluno
+sudo rm -rf /datafiles
+sudo userdel -r aluno
+sudo delgroup dba
+sudo apt-get remove samba
+
+
+
+
+

@@ -1,0 +1,24 @@
+﻿Passo 1 — Installing Webmin
+editar arquivo
+sudo vim  /etc/apt/sources.list
+#incluir a linha
+deb http://download.webmin.com/download/repository sarge contrib
+
+Passo 2 — Registrar as chaves no repositorio
+
+sudo wget http://www.webmin.com/jcameron-key.asc
+
+sudo apt-key add jcameron-key.asc
+
+Passo 3 - atualizar a lista de packages
+
+sudo apt-get update 
+
+
+Passo 4 instalar webmin
+sudo apt-get install webmin 
+
+
+Passo 5 Acessar webmin
+https://your_server_ip:10000
+usar seu usuario e senha

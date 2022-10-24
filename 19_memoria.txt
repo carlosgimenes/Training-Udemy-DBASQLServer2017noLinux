@@ -1,0 +1,17 @@
+﻿O memory.memorylimitmb determina a quantidade memória física (em MB) disponível para o SQL Server. O padrão é 80% da memória física.
+
+Execute o script mssql conf como raiz com o definir comando memory.memorylimitmb. O exemplo a seguir altera a memória disponível para o SQL Server para 2.5 GB (2570 MB).
+
+--Use mssql conf para alterar o diretório de dados padrão com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2570
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+

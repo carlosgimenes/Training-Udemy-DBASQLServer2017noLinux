@@ -1,0 +1,17 @@
+--Verificar a versão instalada do SQL Server
+
+sqlcmd -S localhost,14336 -U SA -P Sql2017@! -Q 'select @@VERSION'
+
+--Atualize o SQL Server
+--Esses comandos baixar o pacote mais recente e substitua os binários localizados em /opt/mssql/. O usuário --gerou bancos de dados e bancos de dados do sistema não são afetados por essa operação.
+
+sudo apt-get update
+sudo apt-get install mssql-server
+
+--Desinstalar o SQL Servcel
+
+sudo apt-get remove mssql-server
+
+A remoção do pacote não exclui os arquivos de banco de dados gerado. Se você deseja excluir os arquivos de banco de dados, use o seguinte comando:
+
+sudo rm -rf /var/opt/mssql/

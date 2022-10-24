@@ -1,0 +1,28 @@
+﻿1. Importe as chaves GPG repositório público.
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+2. Registre o repositório do Microsoft SQL Server Ubuntu.
+sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+
+3. Execute os comandos a seguir para instalar o SQL Server Integration Services.
+
+sudo apt-get update
+sudo apt-get install -y mssql-server-is
+
+4. Depois de instalar o Integration Services, execute ssis-conf. Para obter mais informações, consulte configurar SSIS no Linux com o ssis conf.
+
+sudo /opt/ssis/bin/ssis-conf setup
+
+5. Após a configuração, defina o caminho.
+
+export PATH=/opt/ssis/bin:$PATH
+
+
+--Extras
+Atualização do SSIS
+
+sudo apt-get install mssql-server-is
+
+Remover o SSIS
+
+sudo apt-get remove mssql-server-is

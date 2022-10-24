@@ -1,0 +1,39 @@
+﻿mestre padrão
+O filelocation.masterdatafile e filelocation.masterlogfile alterações de configuração no local onde o mecanismo do SQL Server procura os arquivos de banco de dados mestre. Por padrão, esse local é /var/opt/mssql/data.
+
+--Crie o diretório de destino para novos arquivos de log de erro. O exemplo a seguir cria um novo /datafiles/masterdata diretório:
+
+sudo mkdir /datafiles/masterdata
+
+
+--Permissao do usuario
+sudo chown mssql /datafiles/masterdata
+sudo chgrp mssql /datafiles/masterdata
+chmod 777 /datafiles/masterdata
+
+
+--Use mssql conf para alterar o diretório de banco de dados mestre padrão para os arquivos de log e de dados mestre com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set filelocation.masterdatafile /datafiles/masterdata/master.mdf
+sudo /opt/mssql/bin/mssql-conf set filelocation.masterlogfile /datafiles/masterdata/mastlog.ldf
+
+--Interrompa o serviço do SQL Server:
+
+sudo systemctl stop mssql-server
+
+--Mova o master.mdf e masterlog.ldf:
+
+sudo mv /var/opt/mssql/data/master.mdf /datafiles/masterdata/master.mdf 
+sudo mv /var/opt/mssql/data/mastlog.ldf /datafiles/masterdata/mastlog.ldf
+
+--Inicie o serviço do SQL Server:
+
+sudo systemctl start mssql-server
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf

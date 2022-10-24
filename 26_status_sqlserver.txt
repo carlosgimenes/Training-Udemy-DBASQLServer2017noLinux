@@ -1,0 +1,9 @@
+Verifique o status do serviço do SQL Server usando este comando:
+
+sudo systemctl status mssql-server
+
+Você pode parar, iniciar ou reiniciar o serviço SQL Server conforme necessário usando os seguintes comandos:
+
+sudo systemctl stop mssql-server
+sudo systemctl start mssql-server
+sudo systemctl restart mssql-server

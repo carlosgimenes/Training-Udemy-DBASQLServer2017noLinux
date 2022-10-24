@@ -1,0 +1,3 @@
+--Alterar permisão da pasta Backup
+--Baixar e descompactar o arquivo disponivel nesta aula.
+chmod 777 /datafiles/backup

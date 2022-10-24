@@ -1,0 +1,15 @@
+﻿1. Exibir o conteúdo de /etc/apt/sources.list arquivo.
+
+sudo cat /etc/apt/sources.list
+
+2. Examine a URL do pacote para o servidor mssql. Você pode identificá-lo com a tabela no repositórios deste artigo.
+
+--Configurar
+
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+
+--Atualiza
+sudo apt-get update
+

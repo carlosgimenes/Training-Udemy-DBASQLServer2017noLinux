@@ -1,0 +1,26 @@
+﻿Para desativar todas as configurações feitas com mssql-conf set, chame mssql conf com o unset opção e o nome da configuração. Isso limpa a configuração, efetivamente retorná-lo ao seu valor padrão.
+
+Retirando a config da porta
+sudo /opt/mssql/bin/mssql-conf set network.tcpport
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+Adicionando a config da porta
+
+sudo /opt/mssql/bin/mssql-conf set network.tcpport 14336
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+

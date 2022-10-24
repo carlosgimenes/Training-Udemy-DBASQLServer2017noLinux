@@ -1,0 +1,5 @@
+
+--Comando scp usando a porta 22795 copiando bk para SQL server no linux pasta bk
+-- a porta 22795 foi previamento configurado no ssh do linux.
+
+scp -P 22795 bk_adw_1.bak aluno@192.168.0.100:/datafiles/backup/bk_adw_2.bak 

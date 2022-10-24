@@ -1,0 +1,3 @@
+﻿--Exibir configurações atuais
+
+sudo cat /var/opt/mssql/mssql.conf

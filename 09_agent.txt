@@ -1,0 +1,13 @@
+﻿Para versões de 2017 CU3 e abaixo, instale o SQL Server Agent
+sudo apt-get update 
+sudo apt-get install mssql-server-agent
+sudo systemctl restart mssql-server
+
+Para versões de 2017 CU4 e superior, habilitar o SQL Server Agent
+Habilitar agent
+sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true 
+sudo systemctl restart mssql-server
+
+
+Reinicia o serviço
+sudo systemctl restart mssql-server

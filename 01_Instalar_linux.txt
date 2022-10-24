@@ -1,0 +1,21 @@
+﻿--Instalar linux apt
+Link DROPBOX para DOWNLOAD Instalador Ubuntu 16.04.4
+https://www.dropbox.com/s/kyow8wkoj7uk8yj/ubuntu-16.04.4-server-amd64.iso?dl=0
+
+SQL-LNX-01
+
+
+
+Partições
+Boot Primaria 250 mb
+SWAP 	   2 GB
+Home EXT4  8 GB
+OPT  EXT4  10 GB
+/    EXT4  12 GB 
+
+Atualizacao com apt-get
+Comandos:
+sudo apt-get update
+sudo apt-get upgrade
+
+

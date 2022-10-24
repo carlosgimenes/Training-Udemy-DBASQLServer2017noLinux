@@ -1,0 +1,39 @@
+--EXPORTA WINDOWS
+--Arquivo disponivel nesta aula
+bcp CURSO.DBO.SENSO OUT c:\bk\win_to_linux\exp_senso.bcp -S INFINITY -T -r "\n" -t "|" -w
+
+--CRIA TABELA SQL MANAGEMENT STUDIO DO SQL SERVER NO LINUX NO DATABASE CURSO
+
+
+USE curso
+GO
+
+CREATE TABLE senso(
+	uf varchar(2) NOT NULL,
+	cod_uf varchar(2) NOT NULL,
+	cod_mun varchar(5) NOT NULL,
+	nome_mun varchar(50) NOT NULL,
+	populacao int NOT NULL
+)
+
+
+--COPIAR ARQUIVO TXT PARA PASTA /DATAFILES/BACKUP
+
+--IMPORTAR ARQUIVO NO BD SQL LINUX NA TABELA SENSO DO BD CURSO
+
+
+bcp SENSO IN /datafiles/backup/exp_senso.bcp -e /datafiles/backup/log.log -S localhost,14336 -U sa -P Sql2017@! -d curso -r '\n' -t '|' -c
+
+
+-Ocorrera erro, instalar tool dos2unix
+
+sudo apt-get install dos2unix
+
+--Apos converter arquivo para linux
+
+sudo dos2unix exp_senso.bcp
+
+--Realizar a importação novamente
+
+
+ bcp SENSO IN /datafiles/backup/exp_senso.bcp -e /datafiles/backup/log.log -S localhost,14336 -U sa -P Sql2017@! -d curso -r '\n' -t '|' -c

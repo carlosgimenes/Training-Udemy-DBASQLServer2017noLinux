@@ -1,0 +1,20 @@
+﻿O filelocation.defaultdatadir e filelocation.defaultlogdir configurações alterar o local onde os novo banco de dados e arquivos de log são criados. Por padrão, esse local é /var/opt/mssql/data. Para alterar essas configurações, use as seguintes etapas:
+
+Redirecionar  diretório de destino para o novo banco de dados em arquivos  dados. O exemplo a seguir cria um novo /datafiles/dados diretório:
+
+
+--Use mssql conf para alterar o diretório de dados padrão com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir /datafiles/dados
+
+--Use mssql conf para alterar o diretório de Log padrão com o definir comando:
+
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /datafiles/log
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf

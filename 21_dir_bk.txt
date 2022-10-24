@@ -1,0 +1,24 @@
+﻿O filelocation.defaultbackupdir o local padrão onde os arquivos de backup são gerados de alterações de configuração. Por padrão, esses arquivos são gerados no /var/opt/mssql/data.
+
+--Crie o diretório de destino para novos arquivos de backup. O exemplo a seguir cria um novo /tmp/backup diretório:
+
+sudo mkdir /datafiles/backup
+
+Alterar o proprietário e o grupo do diretório para o mssql usuário:
+
+sudo chown mssql /datafiles/backup
+sudo chgrp mssql /datafiles/backup
+
+Use mssql conf para alterar o diretório de backup padrão com o comando "set":
+
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultbackupdir /datafiles/backup
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+

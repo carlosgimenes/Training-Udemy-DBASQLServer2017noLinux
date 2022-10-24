@@ -1,0 +1,28 @@
+﻿ Diretório de conjunto de auditoria local
+
+O telemetry.userrequestedlocalauditdirectory configuração habilita a auditoria Local e permite que você defina o diretório onde os logs de auditoria Local é criados.
+
+    Crie um diretório de destino para novos logs de auditoria Local. O exemplo a seguir cria um novo /datafiles/auditdiretório:
+
+sudo mkdir /datafiles/audit
+
+Alterar o proprietário e o grupo do diretório para o mssql usuário:
+
+sudo chown mssql /datafiles/audit
+sudo chgrp mssql /datafiles/audit
+
+
+Use mssql conf para alterar o diretório de auditoria padrão com o comando "set":
+Execute o script mssql conf como raiz com o definir comando telemetry.userrequestedlocalauditdirectory:
+
+sudo /opt/mssql/bin/mssql-conf set telemetry.userrequestedlocalauditdirectory /datafiles/audit
+
+--Reinicie SQLserver
+sudo systemctl restart mssql-server
+
+--verifcando mssql.conf
+
+--verifica mssql mssql.conf
+sudo cat /var/opt/mssql/mssql.conf
+
+

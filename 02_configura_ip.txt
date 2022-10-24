@@ -1,0 +1,25 @@
+﻿--Configura IP
+--Abrir arquivo de configuracao para editar
+sudo vim /etc/network/interfaces
+
+--exemplo de configuração
+iface enp0s3 inet static
+   address 192.168.0.100
+   netmask 255.255.255.0
+   network 192.168.0.0
+   broadcast 192.168.0.255
+   gateway 192.168.0.1
+dns-nameservers 8.8.8.8 
+
+
+--Reiniciar serviço de rede
+--renova/release
+sudo dhclient -r enp0s3
+
+
+--Reiniciar a interface
+sudo ifconfig enp0s3 down
+sudo ifconfig enp0s3 up
+
+--Reiniciar a rede
+/etc/init.d/networking restart 

@@ -1,0 +1,25 @@
+﻿1. Importe as chaves GPG repositório público:
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+2. Registre o repositório do Microsoft SQL Server Ubuntu:
+
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+
+obs: Este é o repositório de atualização cumulativa (CU). Para obter mais informações sobre as opções de repositório e suas diferenças
+
+3. Execute os comandos a seguir para instalar o SQL Server:
+
+sudo apt-get update
+sudo apt-get install -y mssql-server
+
+4. Após a conclusão da instalação de pacote, execute mssql conf instalação e siga os prompts para definir a senha de SA e escolha sua edição.
+
+sudo /opt/mssql/bin/mssql-conf setup
+
+5. Quando a configuração estiver concluída, verifique se o serviço está em execução:
+
+systemctl status mssql-server
+
+user SA
+pass Sql2017@!

@@ -1,0 +1,22 @@
+﻿-- Instalar SSH
+ 	
+sudo apt-get install openssh-server openssh-client
+
+2 Copia arquivo config
+sudo cp /etc/ssh/sshd_config  /etc/ssh/sshd_config.bk
+
+
+--verficacao do serviço
+nc -v -z 127.0.0.1 22
+
+3. Alterar porta
+sudo vim /etc/ssh/sshd_config
+para 22795
+
+4. Reiniciar serviço
+sudo /etc/init.d/ssh restart
+
+
+5. Verificando porta
+ 	
+nc -v -z 127.0.0.1 22795
